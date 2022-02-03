@@ -1,35 +1,36 @@
+---
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "nginx-1"
+  name: "siriapp"
   namespace: "default"
   labels:
-    app: "nginx-1"
+    app: "siriapp"
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
-      app: "nginx-1"
+      app: "siriapp"
   template:
     metadata:
       labels:
-        app: "nginx-1"
+        app: "siriapp"
     spec:
       containers:
       - name: "onlinevegetablesale-sha256-1"
-        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/onlinevegetablesale@sha256:4da1dfcbb42fd2abe8706eb0057fd6eb1a48fded604e5bdf1344e3685c7ab4f3"
+        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/onlinevegetablesale@sha256:1c6effd338d497fcbf51d3cdb4e856feb991a5a4784bb02aba2594f3fa08d307"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "nginx-1-hpa-rqit"
+  name: "siriapp-hpa-cpdu"
   namespace: "default"
   labels:
-    app: "nginx-1"
+    app: "siriapp"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "nginx-1"
+    name: "siriapp"
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 5
