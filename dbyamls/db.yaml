@@ -2,35 +2,35 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "siriapp"
+  name: "sirishaapp"
   namespace: "default"
   labels:
-    app: "siriapp"
+    app: "sirishaapp"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: "siriapp"
+      app: "sirishaapp"
   template:
     metadata:
       labels:
-        app: "siriapp"
+        app: "sirishaapp"
     spec:
       containers:
       - name: "onlinevegetablesale-sha256-1"
-        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/onlinevegetablesale@sha256:1c6effd338d497fcbf51d3cdb4e856feb991a5a4784bb02aba2594f3fa08d307"
+        image: "gcr.io/gcpdemo-334906/github.com/sirishabb/onlinevegetablesale@sha256:c2f4712e00c514e2167d2198092ddd25089d539edcd0de66ca5f9bf9740ebc34"
 ---
 apiVersion: "autoscaling/v2beta1"
 kind: "HorizontalPodAutoscaler"
 metadata:
-  name: "siriapp-hpa-cpdu"
+  name: "sirishaapp-hpa-gpqe"
   namespace: "default"
   labels:
-    app: "siriapp"
+    app: "sirishaapp"
 spec:
   scaleTargetRef:
     kind: "Deployment"
-    name: "siriapp"
+    name: "sirishaapp"
     apiVersion: "apps/v1"
   minReplicas: 1
   maxReplicas: 1
